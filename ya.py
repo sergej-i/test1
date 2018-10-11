@@ -43,16 +43,14 @@ class SumFromSrcs:
 
 
 if __name__ == "__main__":
-    from ya_lib import gen_name_by_i, gen_val
+    from ya_lib import gen_name, gen_val, max_items_count
     from random import randint
     from pprint import pprint
 
-    max_items_count = 10 # ограничим максимальное число генерируемых словарей
-
     # допустим, что в источниках не известно сколько элементов
-    src_a = ({gen_name_by_i(i): gen_val()} for i in range(randint(1, max_items_count)))
-    src_b = ({gen_name_by_i(i): gen_val()} for i in range(randint(1, max_items_count)))
-    src_c = ({gen_name_by_i(i): gen_val()} for i in range(randint(1, max_items_count)))
+    src_a = ({gen_name(): gen_val()} for i in range(randint(1, max_items_count)))
+    src_b = ({gen_name(): gen_val()} for i in range(randint(1, max_items_count)))
+    src_c = ({gen_name(): gen_val()} for i in range(randint(1, max_items_count)))
 
     sumFromSrcs = SumFromSrcs()
     sumFromSrcs.src_add(src_a)
@@ -61,5 +59,3 @@ if __name__ == "__main__":
     sumFromSrcs.process_srcs()
 
     pprint(sumFromSrcs.get_rc())
-
-
